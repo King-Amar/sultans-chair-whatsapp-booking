@@ -27,91 +27,135 @@
 
         header {
             text-align: center;
-            padding: 30px 0 20px 0;
+            padding: 25px 0 15px 0;
             border-bottom: 2px solid #d4af37;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             color: #1a1a1a;
             letter-spacing: -0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .location {
-            font-size: 14px;
+            font-size: 13px;
             color: #555;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .rating {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: #b8860b;
         }
 
         .section-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #b8860b;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .card {
+        /* Accordion Styling */
+        .accordion-card {
             background: #ffffff;
             border: 1px solid #e6dec5;
             border-left: 4px solid #d4af37;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.08);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.06);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .accordion-header {
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #ffffff;
+        }
+
+        .accordion-header:hover {
+            background: #fdfbf7;
+        }
+
+        .service-title-area {
+            display: flex;
+            flex-direction: column;
         }
 
         .service-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 6px;
+        }
+
+        .service-short-price {
+            font-size: 13px;
+            font-weight: 800;
+            color: #b8860b;
+            margin-top: 2px;
+        }
+
+        .arrow-icon {
+            font-size: 14px;
+            color: #b8860b;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-card.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 16px;
+            background: #fffdf9;
+        }
+
+        .accordion-card.active .accordion-content {
+            max-height: 400px;
+            padding: 0 16px 16px 16px;
+            border-top: 1px solid #f3efe2;
         }
 
         .service-desc {
-            font-size: 14px;
+            font-size: 13px;
             color: #444;
-            margin-bottom: 14px;
+            margin: 12px 0;
         }
 
         .features-list {
             list-style: none;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .features-list li {
-            font-size: 13px;
+            font-size: 12px;
             color: #333;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .features-list li span {
             color: #b8860b;
             font-weight: bold;
-        }
-
-        .price {
-            font-size: 16px;
-            font-weight: 800;
-            color: #b8860b;
-            margin-bottom: 14px;
         }
 
         .book-btn {
@@ -120,13 +164,13 @@
             background-color: #d4af37;
             color: #1a1a1a;
             text-align: center;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
-            padding: 14px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
             text-decoration: none;
             transition: background 0.2s ease;
-            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 4px rgba(212, 175, 55, 0.2);
         }
 
         .book-btn:hover {
@@ -136,9 +180,9 @@
         .emergency-card {
             background: #ffffff;
             border: 1px solid #e6dec5;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 24px;
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 20px;
             text-align: center;
         }
 
@@ -148,10 +192,10 @@
             background-color: #1a1a1a;
             color: #d4af37;
             text-align: center;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
-            padding: 14px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
             text-decoration: none;
             margin-top: 10px;
             border: 1px solid #d4af37;
@@ -161,9 +205,14 @@
             text-align: center;
             font-size: 12px;
             color: #777;
-            margin-top: 30px;
+            margin-top: 25px;
             padding-bottom: 20px;
             font-weight: 500;
+        }
+
+        footer span {
+            color: #b8860b;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -176,89 +225,140 @@
             <div class="rating">★ 4.9 (68 Verified Reviews)</div>
         </header>
 
-        <div class="section-title">⚡ VIP Grooming Menu</div>
+        <div class="section-title">⚡ Tap Service to Book</div>
 
         <!-- Service 1 -->
-        <div class="card">
-            <div class="service-name">Signature Executive Haircut</div>
-            <div class="service-desc">Precision cut and styling tailored to your face structure with hot towel finish.</div>
-            <ul class="features-list">
-                <li><span>→</span> Consultation & Precision Cut</li>
-                <li><span>→</span> Hair Wash & Conditioning</li>
-                <li><span>→</span> Hot Towel Treatment</li>
-                <li><span>→</span> Professional Styling Finish</li>
-            </ul>
-            <div class="price">KES 1,000</div>
-            <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20a%20Signature%20Executive%20Haircut" class="book-btn">BOOK EXECUTIVE CUT</a>
+        <div class="accordion-card">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="service-title-area">
+                    <span class="service-name">Signature Executive Haircut</span>
+                    <span class="service-short-price">KES 1,000</span>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="service-desc">Precision cut and styling tailored to your face structure with hot towel finish.</div>
+                <ul class="features-list">
+                    <li><span>→</span> Consultation & Precision Cut</li>
+                    <li><span>→</span> Hair Wash & Conditioning</li>
+                    <li><span>→</span> Hot Towel Treatment</li>
+                    <li><span>→</span> Professional Styling Finish</li>
+                </ul>
+                <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20a%20Signature%20Executive%20Haircut" class="book-btn">BOOK EXECUTIVE CUT</a>
+            </div>
         </div>
 
         <!-- Service 2 -->
-        <div class="card">
-            <div class="service-name">Royal Beard Grooming</div>
-            <div class="service-desc">Complete beard care treatment designed for the modern gentleman.</div>
-            <ul class="features-list">
-                <li><span>→</span> Beard Shaping & Trimming</li>
-                <li><span>→</span> Straight Razor Line-Up</li>
-                <li><span>→</span> Steamed Hot Towel Infusion</li>
-                <li><span>→</span> Organic Beard Oil & Balm Application</li>
-            </ul>
-            <div class="price">KES 700</div>
-            <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20Royal%20Beard%20Grooming" class="book-btn">BOOK BEARD GROOMING</a>
+        <div class="accordion-card">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="service-title-area">
+                    <span class="service-name">Royal Beard Grooming</span>
+                    <span class="service-short-price">KES 700</span>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="service-desc">Complete beard care treatment designed for the modern gentleman.</div>
+                <ul class="features-list">
+                    <li><span>→</span> Beard Shaping & Trimming</li>
+                    <li><span>→</span> Straight Razor Line-Up</li>
+                    <li><span>→</span> Steamed Hot Towel Infusion</li>
+                    <li><span>→</span> Organic Beard Oil & Balm Application</li>
+                </ul>
+                <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20Royal%20Beard%20Grooming" class="book-btn">BOOK BEARD GROOMING</a>
+            </div>
         </div>
 
         <!-- Service 3 -->
-        <div class="card">
-            <div class="service-name">Hair & Beard VIP Combo</div>
-            <div class="service-desc">The ultimate chair experience combining our signature cut and royal beard styling.</div>
-            <ul class="features-list">
-                <li><span>→</span> Full Executive Haircut</li>
-                <li><span>→</span> Royal Beard Grooming & Razor Line-Up</li>
-                <li><span>→</span> Double Hot Towel Treatment</li>
-                <li><span>→</span> Scalp Refresh & Styling Products</li>
-            </ul>
-            <div class="price">KES 1,500</div>
-            <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20the%20Hair%20&%20Beard%20VIP%20Combo" class="book-btn">BOOK VIP COMBO</a>
+        <div class="accordion-card">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="service-title-area">
+                    <span class="service-name">Hair & Beard VIP Combo</span>
+                    <span class="service-short-price">KES 1,500</span>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="service-desc">The ultimate chair experience combining our signature cut and royal beard styling.</div>
+                <ul class="features-list">
+                    <li><span>→</span> Full Executive Haircut</li>
+                    <li><span>→</span> Royal Beard Grooming & Razor Line-Up</li>
+                    <li><span>→</span> Double Hot Towel Treatment</li>
+                    <li><span>→</span> Scalp Refresh & Styling Products</li>
+                </ul>
+                <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20the%20Hair%20&%20Beard%20VIP%20Combo" class="book-btn">BOOK VIP COMBO</a>
+            </div>
         </div>
 
         <!-- Service 4 -->
-        <div class="card">
-            <div class="service-name">Executive Head Wash & Scalp Massage</div>
-            <div class="service-desc">Relaxing therapeutic treatment to relieve stress and rejuvenate your scalp.</div>
-            <ul class="features-list">
-                <li><span>→</span> Deep Cleansing Shampoo & Conditioner</li>
-                <li><span>→</span> 15-Minute Stress-Relief Scalp Massage</li>
-                <li><span>→</span> Warm Steam Mist Infusion</li>
-                <li><span>→</span> Blow-Dry & Clean Finish</li>
-            </ul>
-            <div class="price">KES 600</div>
-            <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20an%20Executive%20Head%20Wash" class="book-btn">BOOK SCALP MASSAGE</a>
+        <div class="accordion-card">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="service-title-area">
+                    <span class="service-name">Executive Head Wash & Scalp Massage</span>
+                    <span class="service-short-price">KES 600</span>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="service-desc">Relaxing therapeutic treatment to relieve stress and rejuvenate your scalp.</div>
+                <ul class="features-list">
+                    <li><span>→</span> Deep Cleansing Shampoo & Conditioner</li>
+                    <li><span>→</span> 15-Minute Stress-Relief Scalp Massage</li>
+                    <li><span>→</span> Warm Steam Mist Infusion</li>
+                    <li><span>→</span> Blow-Dry & Clean Finish</li>
+                </ul>
+                <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20an%20Executive%20Head%20Wash" class="book-btn">BOOK SCALP MASSAGE</a>
+            </div>
         </div>
 
         <!-- Service 5 -->
-        <div class="card">
-            <div class="service-name">The Ultimate Sultan Package</div>
-            <div class="service-desc">Total rejuvenation treatment for the executive who demands complete perfection.</div>
-            <ul class="features-list">
-                <li><span>→</span> Signature Executive Haircut</li>
-                <li><span>→</span> Royal Beard Grooming & Razor Shave</li>
-                <li><span>→</span> Deep Cleansing Face Scrub & Mask</li>
-                <li><span>→</span> Full Head, Neck & Shoulder Massage</li>
-            </ul>
-            <div class="price">KES 3,500</div>
-            <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20The%20Ultimate%20Sultan%20Package" class="book-btn">BOOK SULTAN PACKAGE</a>
+        <div class="accordion-card">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="service-title-area">
+                    <span class="service-name">The Ultimate Sultan Package</span>
+                    <span class="service-short-price">KES 3,500</span>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="service-desc">Total rejuvenation treatment for the executive who demands complete perfection.</div>
+                <ul class="features-list">
+                    <li><span>→</span> Signature Executive Haircut</li>
+                    <li><span>→</span> Royal Beard Grooming & Razor Shave</li>
+                    <li><span>→</span> Deep Cleansing Face Scrub & Mask</li>
+                    <li><span>→</span> Full Head, Neck & Shoulder Massage</li>
+                </ul>
+                <a href="https://wa.me/447749452288?text=Hello,%20I'd%20like%20to%20book%20The%20Ultimate%20Sultan%20Package" class="book-btn">BOOK SULTAN PACKAGE</a>
+            </div>
         </div>
 
         <!-- Emergency / Custom Inquiry -->
         <div class="emergency-card">
-            <div class="service-name" style="font-size: 16px;">Need a Private Grooming Session?</div>
-            <div class="service-desc" style="font-size: 13px; margin-bottom: 12px;">Contact our master barber directly for VIP house calls or after-hours bookings.</div>
+            <div class="service-name" style="font-size: 15px;">Need a Private Grooming Session?</div>
+            <div class="service-desc" style="font-size: 12px; margin-bottom: 10px;">Contact our master barber directly for VIP house calls or after-hours bookings.</div>
             <a href="https://wa.me/447749452288?text=Hello,%20I%20have%20an%20inquiry%20about%20private%20grooming%20services" class="emergency-btn">DIRECT WHATSAPP INQUIRY</a>
         </div>
 
         <footer>
-            Powered by AV Digital Solutions
+            Powered by <span>AV Digital Solutions</span>
         </footer>
     </div>
 
+    <script>
+        function toggleAccordion(header) {
+            const card = header.parentElement;
+            const isActive = card.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-card').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // If it wasn't active before, open it
+            if (!isActive) {
+                card.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
